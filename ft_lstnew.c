@@ -6,7 +6,7 @@
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 19:57:29 by klaurine          #+#    #+#             */
-/*   Updated: 2019/08/23 19:18:57 by klaurine         ###   ########.fr       */
+/*   Updated: 2019/08/26 18:54:10 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list		*ft_lstnew(void const *content, size_t content_size)
 			list = NULL;
 			return (NULL);
 		}
-		list->content = content; //tak mojno?
+		ft_memcpy(list->content, content, content_size);
 		list->content_size = content_size;
 	}
 	list->next = NULL;
