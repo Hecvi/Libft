@@ -6,7 +6,7 @@
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 16:07:48 by klaurine          #+#    #+#             */
-/*   Updated: 2019/08/26 18:29:10 by klaurine         ###   ########.fr       */
+/*   Updated: 2019/08/29 18:00:59 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
+	if (!lst || !f)
+		return ;
 	while (lst)
 	{
 		f(lst);
