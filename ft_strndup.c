@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/26 16:17:02 by klaurine          #+#    #+#             */
-/*   Updated: 2019/08/31 17:38:48 by klaurine         ###   ########.fr       */
+/*   Created: 2019/08/31 18:27:53 by klaurine          #+#    #+#             */
+/*   Updated: 2019/08/31 19:26:54 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+char	*ft_strndup(const char *s1, size_t n)
 {
-	t_list *list;
-	t_list *buffer;
+	char	*s2;
 
-	if (!lst || !f)
+	if (!(s2 = (char *)malloc(sizeof(char) * (n + 1))))
 		return (NULL);
-	if (!(list = f(lst)))
-		return (NULL);
-	buffer = list;
-	while (lst->next)
-	{
-		lst = lst->next;
-		if (!(buffer->next = f(lst)))
-		{
-			while (list)
-			{
-				buffer = list->next;
-				free(list);
-				list = buffer;
-			}
-			return (NULL);
-		}
-		buffer = buffer->next;
-	}
-	return (list);
+	s2[n] = '\0';
+	ft_strncpy(s2, s1, n);
+	return (s2);
 }

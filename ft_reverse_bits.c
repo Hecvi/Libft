@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_reverse_bits.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/26 16:17:02 by klaurine          #+#    #+#             */
-/*   Updated: 2019/08/31 17:38:48 by klaurine         ###   ########.fr       */
+/*   Created: 2019/05/03 18:38:31 by klaurine          #+#    #+#             */
+/*   Updated: 2019/08/31 18:10:20 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+unsigned char	ft_reverse_bits(unsigned char octet)
 {
-	t_list *list;
-	t_list *buffer;
+	int				i;
+	unsigned char	a;
 
-	if (!lst || !f)
-		return (NULL);
-	if (!(list = f(lst)))
-		return (NULL);
-	buffer = list;
-	while (lst->next)
+	i = 0;
+	while (i <= 7)
 	{
-		lst = lst->next;
-		if (!(buffer->next = f(lst)))
-		{
-			while (list)
-			{
-				buffer = list->next;
-				free(list);
-				list = buffer;
-			}
-			return (NULL);
-		}
-		buffer = buffer->next;
+		a = a | ((octet >> i) & 1) << (7 - i);
+		i++;
 	}
-	return (list);
+	return (a);
 }

@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_print_bits.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/26 16:17:02 by klaurine          #+#    #+#             */
-/*   Updated: 2019/08/31 17:38:48 by klaurine         ###   ########.fr       */
+/*   Created: 2019/05/03 18:15:17 by klaurine          #+#    #+#             */
+/*   Updated: 2019/08/31 18:03:49 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+void	ft_print_bits(unsigned char octet)
 {
-	t_list *list;
-	t_list *buffer;
+	int i;
+	int a;
 
-	if (!lst || !f)
-		return (NULL);
-	if (!(list = f(lst)))
-		return (NULL);
-	buffer = list;
-	while (lst->next)
+	i = 7;
+	a = 0;
+	while (i >= 0)
 	{
-		lst = lst->next;
-		if (!(buffer->next = f(lst)))
-		{
-			while (list)
-			{
-				buffer = list->next;
-				free(list);
-				list = buffer;
-			}
-			return (NULL);
-		}
-		buffer = buffer->next;
+		a = (octet >> i) & 1;
+		a = a + '0';
+		write(1, &a, 1);
+		i--;
 	}
-	return (list);
 }

@@ -526,3 +526,45 @@ int		main(void)
 	return (0);
 }
 */
+
+/*
+void	print_bits(unsigned char octet);
+
+int		main(void)
+{
+	unsigned char octet;
+
+	octet = '&';
+	print_bits(octet);
+	write(1, "\n", 1);
+	return (0);
+}
+*/
+
+/*
+unsigned char	reverse_bits(unsigned char octet);
+
+int		main(void)
+{
+	unsigned char octet;
+
+	octet = '&';
+	printf("%c\n", reverse_bits(octet));
+	return (0);
+}
+*/
+
+/*
+unsigned char	swap_bits(unsigned char octet);
+
+int		main(void)
+{
+	char c;
+	c = 'd';
+	write(1, &c, 1);
+	write(1, "\n", 1);
+	c = swap_bits(c);
+	write(1, &c, 1);
+	return (0);
+}
+*/
