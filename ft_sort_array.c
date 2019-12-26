@@ -20,8 +20,8 @@ int		*ft_sort_array(int *s, int size)
 
 	i = 0;
 	max = 0;
-	if (!s || s == 0)
-		return (0);
+	if (!s)
+		return (NULL);
 	while (i <= (size - 1))
 	{
 		while (i <= (size - 1))
